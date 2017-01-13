@@ -1,0 +1,23 @@
+{
+  "name": "funerariascondescuento",
+  "description": "",
+  "main": "index.php",
+  "authors": [
+    "diego@bonomedico.es"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "fontawesome#^4.7.0",
+    "jquery-validation": "^1.16.0"
+  }
+}
