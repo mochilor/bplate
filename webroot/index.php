@@ -13,5 +13,5 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 // Determine correct route
 $route=routing($_SERVER['REQUEST_URI']); 
 // Render requested page
-render($route,$post); 
+render($route,$config,$post); 
 // End!

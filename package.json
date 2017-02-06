@@ -1,13 +1,13 @@
 {
-  "name": "funerariascondescuento",
+  "name": "phpboilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple PHP boilerplate for developing small apps.",
   "main": "index.php",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "diego@bonomedico.es",
-  "license": "ISC",
+  "author": "diegutor@gmail.com",
+  "license": "MIT",
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",

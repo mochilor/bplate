@@ -1,17 +1,15 @@
 <?php
-
+/**
+ * Not found error page
+ */
 ?>
-<!-- Intro Header -->
-<header class="intro">
-  <div class="intro-body">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1 class="brand-heading">Página no encontrada</h1>
-          <p class="intro-text">Lo sentimos, la página solicitada no existe<br><a href="/">Ir al inicio</a></p>
-        </div>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Page not found</h1>
+        <p>We're sorry, but this is a 404 error page :(<br><a href="/">Go home!</a></p>
       </div>
-    </div>
-  </div>  
-</header>
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /.jumbotron-->

@@ -1,12 +1,12 @@
 {
-  "name": "funerariascondescuento",
-  "description": "",
+  "name": "phpboilerplate",
+  "description": "Simple PHP boilerplate for developing small apps.",
   "main": "index.php",
   "authors": [
-    "diego@bonomedico.es"
+    "diegutor@gmail.com"
   ],
-  "license": "ISC",
-  "homepage": "",
+  "license": "MIT",
+  "homepage": "https://github.com/mochilor/bplate",
   "private": true,
   "ignore": [
     "**/.*",

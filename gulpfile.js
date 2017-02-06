@@ -16,7 +16,7 @@ var rename = require('gulp-rename');
 
 
 // Config
-var root='../';
+var root='webroot/';
 var config = {
    lessPath: './resources/less/',
   jsPath: './resources/scripts/',
