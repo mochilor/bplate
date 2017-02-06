@@ -1,3 +1,8 @@
+<?php
+/**
+ * Pages header example
+ */
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -10,10 +15,9 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
   <link rel="stylesheet" href="css/main.min.css">
 </head>
-<body class="<?=$bodyclass?>">
+<body class="<?=implode(' ',$bodyclass)?>">
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">

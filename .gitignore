@@ -1,6 +1,6 @@
-/css*
-/fonts*
-/js*
-/private/bower_components/*
-/private/node_modules/*
+/bower_components/*
+/node_modules/*
 /nbproject/*
+/webroot/css*
+/webroot/fonts*
+/webroot/js*

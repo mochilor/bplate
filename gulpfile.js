@@ -1,3 +1,6 @@
+/**
+ * Simple tasks for handle css, js and fonts files
+ */
 
 // Include gulp
 var gulp = require('gulp');
@@ -31,28 +34,36 @@ gulp.task('bower', function() { 
 
 // Task 'js'
 gulp.task('js', function() {
-  var files = mainBowerFiles('**/*.js').concat([config.jsPath+'*']);
+  var files = mainBowerFiles('**/*.js').concat([config.jsPath+'*.js']);
   gulp.src(files)
-    .pipe(concat('main.js'))
-    .pipe(uglify())
-    .pipe(rename({suffix: '.min'}))
+    .pipe(concat('main.js').on('error', function(err) {
+      console.log(err);
+    }))
+    .pipe(uglify().on('error', function(err) {
+      console.log(err);
+    }))
+    .pipe(rename({suffix: '.min'}).on('error', function(err) {
+      console.log(err);
+    }))
     .pipe(gulp.dest(config.publicJsPath));  
 });
 
 // Task 'css'
 gulp.task('css', function() { 
   var files =mainBowerFiles('**/*.less').concat([config.lessPath+'*.less']);
-  
-  // Preparo los css propios del proyecto:
   gulp.src(files)
     .pipe(less().on('error', function (err) {
       console.log(err);
     }))
-    .pipe(concat('main.css'))
+    .pipe(concat('main.css').on('error', function(err) {
+      console.log(err);
+    }))
     .pipe(cssmin().on('error', function(err) {
       console.log(err);
     }))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(rename({suffix: '.min'}).on('error', function(err) {
+      console.log(err);
+    }))
     .pipe(gulp.dest(config.publicCssPath));
 });
 
@@ -63,7 +74,7 @@ gulp.task('fonts', function() { 
 });
 
 // Default task
-gulp.task('default', ['bower', 'js', 'css', 'fonts']);
+gulp.task('default', ['js', 'css', 'fonts']);
 
 // Rerun a task when a file changes
  gulp.task('watch', function() {
