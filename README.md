@@ -20,3 +20,8 @@ gulp bower
 ```
 
 Deafult `bower` task will watch for changes in resources folders.
+
+###Missing features (also known as TO DO!)
+- Javascript and server side simple validation.
+- Database management (basic CRUD).
+- ...
