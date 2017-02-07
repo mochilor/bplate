@@ -36,11 +36,11 @@ function routing($request){
  * passed to view inside $parameters array.
  * 
  * @param array $route The array returned by routing().
- * @param array $config Array with global configuration.
+ * @param array $config Array with global configuration, available for views.
  * @param array $post The content of $_POST, if any.
  */
 function render($route,$config,$post=[]){
-  $error=false;
+  $error=true;
   // Set requested file:
   $file=$route['page'];
   // Set file folder based on request type:
@@ -51,23 +51,19 @@ function render($route,$config,$post=[]){
   }
   // Check file path
   $path=dirname(__FILE__).$folder.$file.'.php';
-  if(!file_exists($path)){
-    // If not found, $error is set to true:
-    $error=true;
+  if(file_exists($path)){
+    $error=check_parameters($route['parameters'],$file);
   }  
+  // If page file is not found or incorrect arguments are detected, we send a 404 error:
+  if($error){
+    $file='not-found';
+    $path=dirname(__FILE__).'/pages/'.$file.'.php';
+    header("HTTP/1.0 404 Not Found");
+  }
   // If $post is empty (that is, the page is requested via GET), render page content inside a HTML layout.   
   if(empty($post)){
     // $parameters contain any parameter found in route
     $parameters=$route['parameters'];
-    if(!$error){
-      $error=check_parameters($parameters,$file);
-    }
-    if($error){
-      // If page file is not found or incorrect arguments are detected, we send a 404 error:
-      $file='not-found';
-      $path=dirname(__FILE__).'/pages/'.$file.'.php';
-      header("HTTP/1.0 404 Not Found");
-    }
     // $bodyclass contain the name of the file to be included in body tag as a class.
     $bodyclass=[$file];
     require_once('layout/header.php');
