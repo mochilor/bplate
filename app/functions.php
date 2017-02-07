@@ -40,6 +40,7 @@ function routing($request){
  * @param array $post The content of $_POST, if any.
  */
 function render($route,$config,$post=[]){
+  $error=false;
   // Set requested file:
   $file=$route['page'];
   // Set file folder based on request type:
@@ -51,17 +52,23 @@ function render($route,$config,$post=[]){
   // Check file path
   $path=dirname(__FILE__).$folder.$file.'.php';
   if(!file_exists($path)){
-    // If not found, file will be replaced with 404 page:
-    $file='not-found';
-    $path=dirname(__FILE__).'/pages/'.$file.'.php';
-    header("HTTP/1.0 404 Not Found");
+    // If not found, $error is set to true:
+    $error=true;
   }  
-  // If $post is empty (that is, the page is requested via GET), render page content
-  // inside an HTML layout. 
-  // $parameters contain any parameter found in route
-  // $bodyclass contain the name of the file to be included in body tag as a class.
+  // If $post is empty (that is, the page is requested via GET), render page content inside a HTML layout.   
   if(empty($post)){
+    // $parameters contain any parameter found in route
     $parameters=$route['parameters'];
+    if(!$error){
+      $error=check_parameters($parameters,$file);
+    }
+    if($error){
+      // If page file is not found or incorrect arguments are detected, we send a 404 error:
+      $file='not-found';
+      $path=dirname(__FILE__).'/pages/'.$file.'.php';
+      header("HTTP/1.0 404 Not Found");
+    }
+    // $bodyclass contain the name of the file to be included in body tag as a class.
     $bodyclass=[$file];
     require_once('layout/header.php');
     require_once($path);
@@ -70,4 +77,29 @@ function render($route,$config,$post=[]){
     extract($post);
     require_once($path);
   }  
+}
+
+/**
+ * Check that received parameters won't exceed the established limit for each 
+ * page. Those limits can be set in $valid_parameters. Returns true if an invalid
+ * number of parameters is detected.
+ * 
+ * @param array $parameters Received parameters that will be checked.
+ * @param string $page Requested page.
+ * @return boolean
+ */
+function check_parameters($parameters,$page){  
+  $error=false;
+  // Here you can define valid number of parameters for desired pages:
+  $valid_parameters=[
+      'example' => 3,
+  ];
+  // If $page is in $valida_parameters array, we'll perform a check:
+  if(array_key_exists($page,$valid_parameters)){
+    if(count($parameters)>$valid_parameters[$page]){
+      // If passed parameters exceed limit, return false:
+      $error=true;
+    }
+  }
+  return $error;
 }

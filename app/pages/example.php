@@ -7,12 +7,13 @@
   <div class="row">
     <div class="col-md-6">
       <h1>This is only an example page</h1>      
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan vestibulum velit eget viverra. Interdum et malesuada fames ac ante ipsum primis in faucibus...</p>    
+      <p>Each page can receive any number of parameters. You can set a valid number of parameters for each page in an included function called check_parameters().</p>    
       <h2>Add parameters to this url:</h2>
       <ol>
         <li><a href="/example/parameter-1">One Parameter</a></li>
         <li><a href="/example/parameter-1/parameter-2-rocks">Two Parameters</a></li>
         <li><a href="/example/parameter-1/parameter-2-rocks/cool-stuff">Three Parameters</a></li>
+        <li><a href="/example/parameter-1/parameter-2-rocks/cool-stuff/too-much-parameters">Four Parameters (triggers a 404 error)</a></li>
       </ol>
 <?php
 if(!empty($parameters)):?>
