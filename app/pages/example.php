@@ -35,7 +35,7 @@ endif;?>
     </div><!-- /.col-md-6 -->
     <div class="col-md-6">
       <h2>Example form with POST</h2>
-      <form method="post" action="example_post">
+      <form method="post" action="/example_post">
         <div class="form-group">
           <label for="example_field">Insert something here:</label>
           <input type="text" class="form-control" name="example" id="example_field" placeholder="Gimme something!">
