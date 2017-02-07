@@ -5,6 +5,11 @@
 $heading_1='Heading';
 $heading_2='Heading 2';
 $heading_3='Heading 3';
+
+// Here you can set values that will be used in header or footer:
+$page_title='Home page - '.$config['company_name'];
+$page_description='Description for home page: blah, blah...';
+$body_class[]='cool-class';
 ?>
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">

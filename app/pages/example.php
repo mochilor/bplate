@@ -2,6 +2,10 @@
 /**
  * Simple GET example
  */
+
+// Here you can set values that will be used in header or footer:
+$page_title='Example title - '.$config['company_name'];
+$page_description='Example metadescription for this url';
 ?>
 <div class="container">
   <div class="row">

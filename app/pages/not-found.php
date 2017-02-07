@@ -2,6 +2,10 @@
 /**
  * Not found error page
  */
+
+// Here you can set values that will be used in header or footer:
+$page_title='Page not found - '.$config['company_name'];
+$page_description='This page doesn\'t exists!';
 ?>
 <div class="jumbotron">
   <div class="container">

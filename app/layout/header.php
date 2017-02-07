@@ -2,6 +2,13 @@
 /**
  * Pages header example
  */
+
+if(empty($page_title)){
+  $page_title='Default title - '.$config['company_name'];
+}
+if(empty($page_description)){
+  $page_description='Default description';
+}
 ?>
 <!doctype html>
   <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -11,13 +18,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
-    <meta name="description" content="">
+    <title><?=$page_title?></title>
+    <meta name="description" content="<?=$page_description?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="/css/main.min.css">
   </head>
-  <body class="<?=implode(' ',$bodyclass)?>">
+  <body class="<?=implode(' ',$body_class)?>">
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">

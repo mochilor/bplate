@@ -64,10 +64,18 @@ function render($route,$config,$post=[]){
   if(empty($post)){
     // $parameters contain any parameter found in route
     $parameters=$route['parameters'];
-    // $bodyclass contain the name of the file to be included in body tag as a class.
-    $bodyclass=[$file];
-    require_once('layout/header.php');
+    // $body_class contain the name of the file to be included in body tag as a class.
+    $body_class=[$file];    
+    
+    // Execute code in page file and store all generated content in a variable:
+    ob_start();
     require_once($path);
+    $content=ob_get_contents();
+    ob_end_clean();    
+    
+    // Render page:
+    require_once('layout/header.php');
+    echo $content;
     require_once('layout/footer.php');
   }else{
     extract($post);
