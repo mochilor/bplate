@@ -98,12 +98,15 @@ function check_parameters($parameters,$page){
   $valid_parameters=[
       'example' => 3,
   ];
-  // If $page is in $valida_parameters array, we'll perform a check:
+  // If $page is in $valid_parameters array, we'll perform a check:
   if(array_key_exists($page,$valid_parameters)){
     if(count($parameters)>$valid_parameters[$page]){
       // If passed parameters exceed limit, return false:
       $error=true;
     }
+  }elseif(count($parameters)>0){
+    // By default, we forbid any parameter in url
+    $error=true;
   }
   return $error;
 }
