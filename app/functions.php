@@ -40,13 +40,14 @@ function routing($request){
  */
 function render($route,$post){
   $error=true;
+  // Optional config values:
+  $config = require_once('../app/config.php'); 
   // Set requested file:
   $file=$route['page'];
   // Set file folder based on request type:
+  $folder='/ajax/';
   if(empty($post)){
     $folder='/pages/';
-  }else{
-    $folder='/ajax/';
   }
   // Check file path
   $path=dirname(__FILE__).$folder.$file.'.php';
@@ -59,9 +60,6 @@ function render($route,$post){
     $path=dirname(__FILE__).'/pages/'.$file.'.php';
     header("HTTP/1.0 404 Not Found");
   }
-  // Optional config values:
-  $config = require_once('../app/config.php'); 
-  
   // If $post is empty (that is, the page is requested via GET), render page content inside a HTML layout.   
   if(empty($post)){
     // $parameters contain any parameter found in route
@@ -95,7 +93,6 @@ function render($route,$post){
  * @return boolean
  */
 function check_parameters($parameters,$page){  
-  $error=false;
   // Here you can define valid number of parameters for desired pages:
   $valid_parameters=[
       'example' => 3,
@@ -104,11 +101,11 @@ function check_parameters($parameters,$page){
   if(array_key_exists($page,$valid_parameters)){
     if(count($parameters)>$valid_parameters[$page]){
       // If passed parameters exceed limit, return false:
-      $error=true;
+      return true;
     }
   }elseif(count($parameters)>0){
     // By default, we forbid any parameter in url
-    $error=true;
+    return true;
   }
-  return $error;
+  return false;
 }
