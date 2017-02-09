@@ -36,10 +36,9 @@ function routing($request){
  * passed to view inside $parameters array.
  * 
  * @param array $route The array returned by routing().
- * @param array $config Array with global configuration, available for views.
  * @param array $post The content of $_POST, if any.
  */
-function render($route,$config,$post=[]){
+function render($route,$post){
   $error=true;
   // Set requested file:
   $file=$route['page'];
@@ -60,6 +59,9 @@ function render($route,$config,$post=[]){
     $path=dirname(__FILE__).'/pages/'.$file.'.php';
     header("HTTP/1.0 404 Not Found");
   }
+  // Optional config values:
+  $config = require_once('../app/config.php'); 
+  
   // If $post is empty (that is, the page is requested via GET), render page content inside a HTML layout.   
   if(empty($post)){
     // $parameters contain any parameter found in route
